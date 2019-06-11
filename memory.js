@@ -1,12 +1,16 @@
 class Memory {
-  constructor () {
+  constructor (global = true) {
     var _endaddr = 0
     // var _addrbook = []
     var _objbook = []
     var _newobj = function (object /* object */) {
       _objbook.push(object)
-      _endaddr += 1
-      return object
+      _endaddr = _endaddr + 1
+      if (global) {
+        return new Pointer((_endaddr - 1).toString(36))
+      } else {
+        return new Pointer(_endaddr - 1, this)
+      }
     }
     this.valueOf = function (address = '0' /* string */) {
       return _objbook[parseInt(address, 36)]
@@ -14,6 +18,9 @@ class Memory {
     this.changeValue = function (address, object) {
       _objbook[parseInt(address, 36)] = object
       return 0
+    }
+    this.newobj = function (object) {
+      return _newobj(object)
     }
   }
 }
@@ -32,23 +39,33 @@ class Pointer {
     this.value = function () {
       return _value
     }
-    this.point = function () {
+    this._realobj = function () {
       if (_MemoryObj !== undefined) {
         console.log('feat coming soon')
       } else {
-        window.publicMemoryObj.valueOf(_value)
+        return window.publicMemoryObj.valueOf(_value)
       }
     }
-  }
-  get value () {
-    return this.value()
-  }
-  set value (_) {
-    throw new Error("Prohibited! You Can't change a pointer's value")
   }
   set point (object) {
     this.changeValue()
   }
+  get point () {
+    return this._realobj()
+  }
 }
 
 window.publicMemoryObj = new Memory()
+
+var x = 55
+var ptr = window.publicMemoryObj.newobj(x)
+console.log(ptr)
+console.log(typeof (ptr))
+console.log(ptr.value())
+console.log(typeof (ptr.value()))
+console.log(ptr.point)
+console.log(typeof (ptr.point))
+var y = 99
+ptr.changeValue(y)
+console.log(ptr.point)
+console.log(typeof (ptr.point))
