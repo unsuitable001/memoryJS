@@ -1,7 +1,6 @@
 class Memory {
-  constructor (global = true) {
+  constructor (global = false) {
     var _endaddr = 0
-    // var _addrbook = []
     var _objbook = []
     var _newobj = function (object /* object */) {
       _objbook.push(object)
@@ -9,7 +8,7 @@ class Memory {
       if (global) {
         return new Pointer((_endaddr - 1).toString(36))
       } else {
-        return new Pointer(_endaddr - 1, this)
+        return new Pointer((_endaddr - 1).toString(36), true)
       }
     }
     this.valueOf = function (address = '0' /* string */) {
@@ -26,12 +25,12 @@ class Memory {
 }
 
 class Pointer {
-  constructor (address = '0' /* address string */, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+  constructor (address = '0' /* address string */, local = false) {
     var _value = address
-    var _MemoryObj = MemoryObj
-    this.changeValue = function (object) {
-      if (_MemoryObj !== undefined) {
-        console.log('feat coming soon')
+    var _local = local
+    this.changeValue = function (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+      if (_local) {
+        MemoryObj.changeValue(_value, object)
       } else {
         window.publicMemoryObj.changeValue(_value, object)
       }
@@ -39,33 +38,31 @@ class Pointer {
     this.value = function () {
       return _value
     }
-    this._realobj = function () {
-      if (_MemoryObj !== undefined) {
-        console.log('feat coming soon')
+    this.pointedTo = function (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+      if (_local) {
+        MemoryObj.valueOf(_value)
       } else {
         return window.publicMemoryObj.valueOf(_value)
       }
     }
+    this.isLocal = function () {
+      return _local
+    }
   }
   set point (object) {
-    this.changeValue()
+    if (this.isLocal()) {
+      throw new Error('Pointer.point shorthand is only applicable for global pointers. Use changeValue() function instead')
+    } else {
+      this.changeValue(object)
+    }
   }
   get point () {
-    return this._realobj()
+    if (this.isLocal()) {
+      throw new Error('Pointer.point shorthand is only applicable for global pointers. Use pointedTo() function instead')
+    } else {
+      this.pointedTo()
+    }
   }
 }
 
 window.publicMemoryObj = new Memory()
-
-var x = 55
-var ptr = window.publicMemoryObj.newobj(x)
-console.log(ptr)
-console.log(typeof (ptr))
-console.log(ptr.value())
-console.log(typeof (ptr.value()))
-console.log(ptr.point)
-console.log(typeof (ptr.point))
-var y = 99
-ptr.changeValue(y)
-console.log(ptr.point)
-console.log(typeof (ptr.point))
