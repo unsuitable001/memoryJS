@@ -1,29 +1,3 @@
-class Memory {
-  constructor (global = false) {
-    var _endaddr = 0
-    var _objbook = []
-    var _newobj = function (object /* object */) {
-      _objbook.push(object)
-      _endaddr = _endaddr + 1
-      if (global) {
-        return new Pointer((_endaddr - 1).toString(36))
-      } else {
-        return new Pointer((_endaddr - 1).toString(36), true)
-      }
-    }
-    this.valueOf = function (address = '0' /* string */) {
-      return _objbook[parseInt(address, 36)]
-    }
-    this.changeValue = function (address, object) {
-      _objbook[parseInt(address, 36)] = object
-      return 0
-    }
-    this.newobj = function (object) {
-      return _newobj(object)
-    }
-  }
-}
-
 class Pointer {
   constructor (address = '0' /* address string */, local = false) {
     var _value = address
@@ -61,6 +35,32 @@ class Pointer {
       throw new Error('Pointer.point shorthand is only applicable for global pointers. Use pointedTo() function instead')
     } else {
       this.pointedTo()
+    }
+  }
+}
+
+class Memory {
+  constructor (global = false) {
+    var _endaddr = 0
+    var _objbook = []
+    var _newobj = function (object /* object */) {
+      _objbook.push(object)
+      _endaddr = _endaddr + 1
+      if (global) {
+        return new Pointer((_endaddr - 1).toString(36))
+      } else {
+        return new Pointer((_endaddr - 1).toString(36), true)
+      }
+    }
+    this.valueOf = function (address = '0' /* string */) {
+      return _objbook[parseInt(address, 36)]
+    }
+    this.changeValue = function (address, object) {
+      _objbook[parseInt(address, 36)] = object
+      return 0
+    }
+    this.newobj = function (object) {
+      return _newobj(object)
     }
   }
 }
