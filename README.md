@@ -42,7 +42,7 @@ console.log(window.publicMemoryObj.valueOf(ptr.value())) // output : 55
 
 ```javascript
 ptr.changeValue(96)
-\\  or
+//  or
 window.publicMemoryObj.changeValue(ptr.value(), 96)
 ```
 
@@ -54,5 +54,6 @@ var newptr = new Pointer('05f9')    // where 05f9 is the memory address (i.e val
 ### Trying to access the whole memory object
 
 ```javascript
-console.log(window.publicMemoryObj) // 
+console.log(window.publicMemoryObj) // try yourself. it will not display any of the contents. Will only print the available methods.
 ```
+
