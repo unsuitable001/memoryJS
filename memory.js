@@ -34,7 +34,7 @@ class Pointer {
     if (this.isLocal()) {
       throw new Error('Pointer.point shorthand is only applicable for global pointers. Use pointedTo() function instead')
     } else {
-      this.pointedTo()
+      return this.pointedTo()
     }
   }
 }
@@ -65,4 +65,4 @@ class Memory {
   }
 }
 
-window.publicMemoryObj = new Memory()
+window.publicMemoryObj = new Memory(true)

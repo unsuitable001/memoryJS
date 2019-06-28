@@ -12,30 +12,47 @@ memoryJS is a dependecy free, ES6 compliant JS library that implements the conce
 
 **Browser :**
 
-```<script src="memory.js"></script>```
+```javascript
+<script src="memory.js"></script>
+```
 
 ## Usage
 
 ### Creating New Object in Memory
 
-```var ptr = window.publicMemoryObj.newobj(55)    \\this method returns a pointer object```
+```javascript
+var ptr = window.publicMemoryObj.newobj(55)    // this method returns a pointer object
+```
 
 ### Getting The Memory Address Of The Object
 
-```console.log(ptr.value())```
+```javascript
+console.log(ptr.value())
+```
 
 ### Accessing The Stored Object from Memory
 
-```
-console.log(ptr.pointedTo())   \\ output : 55
-console.log(ptr.point)    \\ output : 55
-console.log(window.publicMemoryObj.valueOf(ptr.value())) \\ output : 55
+```javascript
+console.log(ptr.pointedTo())   // output : 55
+console.log(ptr.point)    // output : 55
+console.log(window.publicMemoryObj.valueOf(ptr.value())) // output : 55
 ```
 
 ### Changing The Stored Object in Memory
 
-```
+```javascript
 ptr.changeValue(96)
 \\  or
 window.publicMemoryObj.changeValue(ptr.value(), 96)
+```
+
+### Creating Custom Pointer Object
+
+```javascript
+var newptr = new Pointer('05f9')    // where 05f9 is the memory address (i.e value of the pointer)
+```
+### Trying to access the whole memory object
+
+```javascript
+console.log(window.publicMemoryObj) // 
 ```
