@@ -2,8 +2,11 @@ class Pointer {
   constructor (address = '0' /* address string */, local = false) {
     var _value = address
     var _local = local
+    this.isLocal = function () {
+      return _local
+    }
     this.changeValue = function (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
-      if (_local) {
+      if (this.isLocal()) {
         MemoryObj.changeValue(_value, object)
       } else {
         window.publicMemoryObj.changeValue(_value, object)
@@ -13,14 +16,19 @@ class Pointer {
       return _value
     }
     this.pointedTo = function (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
-      if (_local) {
+      if (this.isLocal()) {
         MemoryObj.valueOf(_value)
       } else {
         return window.publicMemoryObj.valueOf(_value)
       }
     }
-    this.isLocal = function () {
-      return _local
+    this.free = function (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+      if (this.isLocal()) {
+        MemoryObj.free(this.value())
+      } else {
+        window.publicMemoryObj.free()
+      }
+      return null
     }
   }
   set point (object) {
@@ -62,6 +70,11 @@ class Memory {
     this.newobj = function (object) {
       return _newobj(object)
     }
+    this.free = function (address = '0' /* string */) {
+      _objbook[parseInt(address, 36)] = null
+      return 0
+    }
+    this.nullptr = this.newobj(null)
   }
 }
 

@@ -43,7 +43,17 @@ console.log(window.publicMemoryObj.valueOf(ptr.value())) // output : 55
 ```javascript
 ptr.changeValue(96)
 //  or
+ptr.point = 96
+//	or
 window.publicMemoryObj.changeValue(ptr.value(), 96)
+```
+
+### Deleting An Object From Memory
+
+```javascript
+ptr.free()	// returns null object
+// or
+window.publicMemoryObj.free()	// returns zero
 ```
 
 ### Creating Custom Pointer Object
