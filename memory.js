@@ -1,3 +1,10 @@
+if (typeof process !== 'undefined') {
+  console.log('You are running under NodeJS')
+  var window = {
+    name: 'Dummy Window Object Fallback for NodeJS',
+    isReal: false
+  }
+}
 class Pointer {
   constructor (address = '0' /* address string */, local = false) {
     var _value = address
@@ -5,31 +12,32 @@ class Pointer {
     this.isLocal = function () {
       return _local
     }
-    this.changeValue = function (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
-      if (this.isLocal()) {
-        MemoryObj.changeValue(_value, object)
-      } else {
-        window.publicMemoryObj.changeValue(_value, object)
-      }
-    }
     this.value = function () {
       return _value
     }
-    this.pointedTo = function (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
-      if (this.isLocal()) {
-        MemoryObj.valueOf(_value)
-      } else {
-        return window.publicMemoryObj.valueOf(_value)
-      }
+  }
+  pointedTo (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+    if (this.isLocal()) {
+      return MemoryObj.valueOf(this.value())
+    } else {
+      return window.publicMemoryObj.valueOf(this.value())
     }
-    this.free = function (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
-      if (this.isLocal()) {
-        MemoryObj.free(this.value())
-      } else {
-        window.publicMemoryObj.free()
-      }
-      return null
+  }
+  changeValue (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+    if (this.isLocal()) {
+      MemoryObj.changeValue(this.value(), object)
+    } else {
+      window.publicMemoryObj.changeValue(this.value(), object)
     }
+    return 0
+  }
+  free (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
+    if (this.isLocal()) {
+      MemoryObj.free(this.value())
+    } else {
+      window.publicMemoryObj.free()
+    }
+    return null
   }
   set point (object) {
     if (this.isLocal()) {
@@ -51,7 +59,7 @@ class Memory {
   constructor (global = false) {
     var _endaddr = 0
     var _objbook = []
-    var _newobj = function (object /* object */) {
+    this.newobj = function (object /* object */) {
       _objbook.push(object)
       _endaddr = _endaddr + 1
       if (global) {
@@ -66,9 +74,6 @@ class Memory {
     this.changeValue = function (address, object) {
       _objbook[parseInt(address, 36)] = object
       return 0
-    }
-    this.newobj = function (object) {
-      return _newobj(object)
     }
     this.free = function (address = '0' /* string */) {
       _objbook[parseInt(address, 36)] = null

@@ -1,19 +1,29 @@
 # memoryJS
 
-memoryJS is a dependecy free, ES6 compliant JS library that implements the concept of pointers in JavaScript
+memoryJS is a dependecy free, ES6 compliant JS library that implements the concept of pointers in JavaScript. And, oh yeah! It's tiny.
+
+_memory.js - 2.5kb (standard)_
+
+_memory.min.js - 1.2kb (minified)_
+
+_memory.secret.min.js - 3kb (obfuscated)_
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 [![License](https://img.shields.io/github/license/unsuitable001/memoryJS.svg?style=popout)](https://raw.githubusercontent.com/unsuitable001/memoryJS/master/LICENSE) [![Build Status](https://travis-ci.org/unsuitable001/memoryJS.svg?branch=master)](https://travis-ci.org/unsuitable001/memoryJS) [![codebeat badge](https://codebeat.co/badges/9a04c2ff-0e70-4290-a340-67f37d41e162)](https://codebeat.co/projects/github-com-unsuitable001-memoryjs-master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/392b5ccd3b854df8bc0988e359872afb)](https://www.codacy.com/app/unsuitable001/memoryJS?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=unsuitable001/memoryJS&amp;utm_campaign=Badge_Grade)
 
-**Preliminary work is done. Testing in progress. Feature Requests, Bug Reports & Contributions are welcomed**
+**Preliminary work is done. Testing in progress. Feature Requests, Bug Reports & Contributions are welcomed. Node Package Coming Soon**
 
 ## Installation
 
 **Browser :**
 
-```javascript
+```html
 <script src="memory.js"></script>
+<!-- or, use the minified version -->
+<script src="memory.min.js"></script>
+<!-- or, you can use a obfuscated version too -->
+<script src="memory.secret.min.js"></script>
 ```
 
 ## Usage
