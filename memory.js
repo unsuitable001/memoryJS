@@ -13,6 +13,7 @@ class Pointer {
       return _value
     }
   }
+
   pointedTo (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
     if (this.isLocal()) {
       return MemoryObj.valueOf(this.value())
@@ -20,6 +21,7 @@ class Pointer {
       return memoryJS.publicMemoryObj.valueOf(this.value())
     }
   }
+
   changeValue (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
     if (this.isLocal()) {
       MemoryObj.changeValue(this.value(), object)
@@ -28,6 +30,7 @@ class Pointer {
     }
     return 0
   }
+
   free (MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
     if (this.isLocal()) {
       MemoryObj.free(this.value())
@@ -36,6 +39,7 @@ class Pointer {
     }
     return null
   }
+
   set point (object) {
     if (this.isLocal()) {
       throw new Error('Pointer.point shorthand is only applicable for global pointers. Use changeValue() function instead')
@@ -43,6 +47,7 @@ class Pointer {
       this.changeValue(object)
     }
   }
+
   get point () {
     if (this.isLocal()) {
       throw new Error('Pointer.point shorthand is only applicable for global pointers. Use pointedTo() function instead')
@@ -65,17 +70,21 @@ class Memory {
         return new Pointer((_endaddr - 1).toString(36), true)
       }
     }
+
     this.valueOf = function (address = '0' /* string */) {
       return _objbook[parseInt(address, 36)]
     }
+
     this.changeValue = function (address, object) {
       _objbook[parseInt(address, 36)] = object
       return 0
     }
+
     this.free = function (address = '0' /* string */) {
       _objbook[parseInt(address, 36)] = null
       return 0
     }
+
     this.nullptr = this.newobj(null)
   }
 }

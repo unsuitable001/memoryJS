@@ -2,11 +2,11 @@
 
 memoryJS is a dependecy free, ES6 compliant JS library that implements the concept of pointers in JavaScript. And, oh yeah! It's tiny.
 
-**memory.js - 2.5kb (standard)**
+memory.js - 2.5kb (standard)
 
-**memory.min.js - 1.2kb (minified)**
+memory.min.js - 1.2kb (minified)
 
-**memory.secret.min.js - 3kb (obfuscated)**
+memory.secret.min.js - 2.4kb (obfuscated)
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
