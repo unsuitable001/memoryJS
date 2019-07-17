@@ -1,10 +1,7 @@
-if (typeof process !== 'undefined') {
-  console.log('You are running under NodeJS')
-  var window = {
-    name: 'Dummy Window Object Fallback for NodeJS',
-    isReal: false
-  }
+var memoryJS = {
+  name: 'A memoryJS base global scoped object'
 }
+
 class Pointer {
   constructor (address = '0' /* address string */, local = false) {
     var _value = address
@@ -20,14 +17,14 @@ class Pointer {
     if (this.isLocal()) {
       return MemoryObj.valueOf(this.value())
     } else {
-      return window.publicMemoryObj.valueOf(this.value())
+      return memoryJS.publicMemoryObj.valueOf(this.value())
     }
   }
   changeValue (object, MemoryObj /* in case of Local Memory object, pass it. Otherwise, leave it */) {
     if (this.isLocal()) {
       MemoryObj.changeValue(this.value(), object)
     } else {
-      window.publicMemoryObj.changeValue(this.value(), object)
+      memoryJS.publicMemoryObj.changeValue(this.value(), object)
     }
     return 0
   }
@@ -35,7 +32,7 @@ class Pointer {
     if (this.isLocal()) {
       MemoryObj.free(this.value())
     } else {
-      window.publicMemoryObj.free()
+      memoryJS.publicMemoryObj.free()
     }
     return null
   }
@@ -83,4 +80,4 @@ class Memory {
   }
 }
 
-window.publicMemoryObj = new Memory(true)
+memoryJS.publicMemoryObj = new Memory(true)

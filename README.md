@@ -2,11 +2,11 @@
 
 memoryJS is a dependecy free, ES6 compliant JS library that implements the concept of pointers in JavaScript. And, oh yeah! It's tiny.
 
-_memory.js - 2.5kb (standard)_
+**memory.js - 2.5kb (standard)**
 
-_memory.min.js - 1.2kb (minified)_
+**memory.min.js - 1.2kb (minified)**
 
-_memory.secret.min.js - 3kb (obfuscated)_
+**memory.secret.min.js - 3kb (obfuscated)**
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
@@ -31,7 +31,7 @@ _memory.secret.min.js - 3kb (obfuscated)_
 ### Creating New Object in Memory
 
 ```javascript
-var ptr = window.publicMemoryObj.newobj(55)    // this method returns a pointer object
+var ptr = memoryJS.publicMemoryObj.newobj(55)    // this method returns a pointer object
 ```
 
 ### Getting The Memory Address Of The Object
@@ -45,7 +45,7 @@ console.log(ptr.value())
 ```javascript
 console.log(ptr.pointedTo())   // output : 55
 console.log(ptr.point)    // output : 55
-console.log(window.publicMemoryObj.valueOf(ptr.value())) // output : 55
+console.log(memoryJS.publicMemoryObj.valueOf(ptr.value())) // output : 55
 ```
 
 ### Changing The Stored Object in Memory
@@ -55,7 +55,7 @@ ptr.changeValue(96)
 //  or
 ptr.point = 96
 //	or
-window.publicMemoryObj.changeValue(ptr.value(), 96)
+memoryJS.publicMemoryObj.changeValue(ptr.value(), 96)
 ```
 
 ### Deleting An Object From Memory
@@ -63,7 +63,7 @@ window.publicMemoryObj.changeValue(ptr.value(), 96)
 ```javascript
 ptr.free()	// returns null object
 // or
-window.publicMemoryObj.free()	// returns zero
+memoryJS.publicMemoryObj.free()	// returns zero
 ```
 
 ### Creating Custom Pointer Object
@@ -74,5 +74,5 @@ var newptr = new Pointer('05f9')    // where 05f9 is the memory address (i.e val
 ### Trying to access the whole memory object
 
 ```javascript
-console.log(window.publicMemoryObj) // try yourself. it will not display any of the contents. Will only print the available methods.
+console.log(memoryJS.publicMemoryObj) // try yourself. it will not display any of the contents. Will only print the available methods.
 ```
