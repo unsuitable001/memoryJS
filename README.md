@@ -76,3 +76,25 @@ var newptr = new Pointer('05f9')    // where 05f9 is the memory address (i.e val
 ```javascript
 console.log(memoryJS.publicMemoryObj) // try yourself. it will not display any of the contents. Will only print the available methods.
 ```
+
+## Donate
+
+### For Indian People
+
+![Donate Via UPI](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/images/UPIQRCode.png)
+
+UPI ID: **unsuitable001@ybl**
+
+### For People Worldwide
+
+[![PayPal Me](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/images/paypalme.jpg)](https://www.paypal.me/unsuitable001)
+[![Donate using Debit/Credit card](https://www.paypalobjects.com/en_GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G6N58TAQXHFBA)
+
+## Let's Connect
+
+[![Twitter](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/twitter.png)](https://twitter.com/unsuitable001)
+[![Gitter Chat](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/gitter.png)](https://gitter.im/unsuitable001)
+
+## Hire Me
+
+Please go to : https://unsuitable001.github.io/hire
