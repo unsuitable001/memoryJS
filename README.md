@@ -92,8 +92,8 @@ UPI ID: **unsuitable001@ybl**
 
 ## Let's Connect
 
-[![Twitter](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/twitter.png)](https://twitter.com/unsuitable001)
-[![Gitter Chat](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/gitter.png)](https://gitter.im/unsuitable001)
+[![Twitter](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/images/twitter.png)](https://twitter.com/unsuitable001)
+[![Gitter Chat](https://raw.githubusercontent.com/unsuitable001/Notice_And_My_Identity/master/images/gitter.png)](https://gitter.im/unsuitable001)
 
 ## Hire Me
 
