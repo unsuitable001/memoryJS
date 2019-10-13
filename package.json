@@ -1,0 +1,29 @@
+{
+  "name": "memoryjs",
+  "version": "1.0.0",
+  "description": "memoryJS is a dependecy free, ES6 compliant JS library that implements the concept of pointers in JavaScript",
+  "main": "memory.min.js",
+  "files": [
+    "memory.min.js",
+    "memory.secret.min.js"
+  ],
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "standard memory.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unsuitable001/memoryJS.git"
+  },
+  "keywords": [
+    "memoryjs"
+  ],
+  "author": "unsuitable001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unsuitable001/memoryJS/issues"
+  },
+  "homepage": "https://github.com/unsuitable001/memoryJS#readme"
+}
