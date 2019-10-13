@@ -11,7 +11,10 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "standard memory.js"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "standard": "standard",
+    "validate":"npm run standard && npm run test"
   },
   "repository": {
     "type": "git",
@@ -21,9 +24,21 @@
     "memoryjs"
   ],
   "author": "unsuitable001",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/unsuitable001/memoryJS/issues"
   },
-  "homepage": "https://github.com/unsuitable001/memoryJS#readme"
+  "homepage": "https://github.com/unsuitable001/memoryJS#readme",
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "standard": "^14.3.1"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }

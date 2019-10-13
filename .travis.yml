@@ -4,8 +4,9 @@ cache: npm
 node_js:
   - "10"
 before_script:
-  - npm install eslint --global
-  - npm install standard --global
+  - npm install -g codeclimate-test-reporter
 script:
   - ./runcheckendline.sh
-  - standard
+  - npm run validate
+  - npm run test:coverage
+  - codeclimate-test-reporter < coverage/lcov.info

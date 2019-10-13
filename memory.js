@@ -90,3 +90,5 @@ class Memory {
 }
 
 memoryJS.publicMemoryObj = new Memory(true)
+
+module.exports = memoryJS
