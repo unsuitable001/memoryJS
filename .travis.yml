@@ -4,7 +4,7 @@ cache: npm
 node_js:
   - "10"
 script:
-  - ./runcheckendline.sh
+  - ./scripts/runcheckendline.sh
   - npm run validate
 after_success:
-  - ./report-coverage.sh
+  - ./scripts/report-coverage.sh
