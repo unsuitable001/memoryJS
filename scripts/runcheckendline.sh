@@ -3,6 +3,7 @@ flag=0
 for i in $(find . -type f ! -path "*/*.egg-info/*"\
     ! -path "./.*"\
     ! -path "*.min.*"\
+    ! -path "./node_modules/*"\
     ! -path "*.svg" -exec grep -Iq . {} \; -and -print); do
     if [ "$(tail -c 1 $i)" != "" ]; then
         echo "$i needs newline at the end"

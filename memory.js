@@ -90,3 +90,8 @@ class Memory {
 }
 
 memoryJS.publicMemoryObj = new Memory(true)
+
+if (typeof window === 'undefined') {
+  module.exports = memoryJS
+}
+

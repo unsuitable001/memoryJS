@@ -3,9 +3,8 @@ language: node_js
 cache: npm
 node_js:
   - "10"
-before_script:
-  - npm install eslint --global
-  - npm install standard --global
 script:
-  - ./runcheckendline.sh
-  - standard
+  - ./scripts/runcheckendline.sh
+  - npm run validate
+after_success:
+  - ./scripts/report-coverage.sh
